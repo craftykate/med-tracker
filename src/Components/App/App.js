@@ -50,9 +50,7 @@ class App extends Component {
       date: new Date()
     }
     // find index of illness to update
-    const illnessIndex = this.state.illnesses.findIndex(illness => {
-      return illness.id === illnessId;
-    });
+    const illnessIndex = this.returnIllnessIndex(illnessId);
     // get illness to update
     const illnessToUpdate = {...this.state.illnesses[illnessIndex]};
     // make new array of existing records plus new record
@@ -69,20 +67,45 @@ class App extends Component {
     })
   }
 
-  // delete illness from state array
-  deleteIllnessHandler = (illnessToDeleteId) => {
-    // get index of illness to delete
-    const illnessIndex = this.state.illnesses.findIndex(illness => {
-      return illness.id === illnessToDeleteId
-    });
-    // make copy of illnesses array
+  updateIllnessNameHandler = (event, illnessId) => {
+    const illnessIndex = this.returnIllnessIndex(illnessId);
+    const illness = {...this.state.illnesses[illnessIndex]}
+    illness.name = event.target.value;
     const illnesses = [...this.state.illnesses];
-    // remove item from copy
-    illnesses.splice(illnessIndex, 1);
-    // save copy to state
+    illnesses[illnessIndex] = illness
     this.setState({
       illnesses: illnesses
     })
+  }
+
+  // delete illness from state array
+  deleteIllnessHandler = (illnessId) => {
+    const illnessIndex = this.returnIllnessIndex(illnessId);
+    const illnesses = [...this.state.illnesses];
+    illnesses.splice(illnessIndex, 1);
+    this.setState({
+      illnesses: illnesses
+    })
+  }
+
+  deleteRecordHandler = (illnessId, recordId) => {
+    const illnessIndex = this.returnIllnessIndex(illnessId);
+    const illnesses = [...this.state.illnesses]
+    const illness = {...this.state.illnesses[illnessIndex]}
+    const recordIndex = illness.records.findIndex(record => {
+      return record.id === recordId;
+    });
+    illness.records.splice(recordIndex, 1);
+    illnesses[illnessIndex] = illness;
+    this.setState({
+      illnesses: illnesses
+    })
+  }
+
+  returnIllnessIndex = (illnessId) => {
+    return this.state.illnesses.findIndex(illness => {
+      return illness.id === illnessId;
+    });
   }
 
   render() {
@@ -95,6 +118,8 @@ class App extends Component {
           illnesses={this.state.illnesses}
           saveNewRecord={this.saveNewRecordHandler}
           deleteIllness={this.deleteIllnessHandler}
+          updateIllnessName={this.updateIllnessNameHandler}
+          deleteRecord={this.deleteRecordHandler}
         />
       </div>
     );

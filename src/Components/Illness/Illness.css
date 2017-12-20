@@ -72,6 +72,12 @@
   background-color: rgb(160, 80, 222);
 }
 
+.MedEvent .delRecord {
+  font-size: .8em;
+  font-style: italic;
+  margin-left: 10px;
+}
+
 .popup {
   position: fixed;
   width: 100%;

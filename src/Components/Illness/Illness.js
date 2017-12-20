@@ -23,6 +23,8 @@ export class Illness extends Component {
           illness={this.props.illness}
           removeEditBox={this.showEditBoxHandler}
           deleteIllness={this.props.deleteIllness}
+          updateIllnessName={this.props.updateIllnessName}
+          deleteRecord={this.props.deleteRecord}
         />
       )
     }

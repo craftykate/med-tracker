@@ -15,6 +15,11 @@ export class IllnessEditDisplay extends Component {
               className="medRecord"
               value={record.info}
               />
+            <a
+              className="delRecord"
+              onClick={() => this.props.deleteRecord(this.props.illness.id, record.id)}>
+              del
+            </a>
           </li>
         )
       })
@@ -29,7 +34,7 @@ export class IllnessEditDisplay extends Component {
           <input
             className="name"
             value={this.props.illness.name}
-            placeholder="Can't be empty"
+            onChange={(event) => this.props.updateIllnessName(event, this.props.illness.id)}
             />
           <ul>
             {this.renderRecords()}
