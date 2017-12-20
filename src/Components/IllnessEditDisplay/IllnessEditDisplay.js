@@ -31,7 +31,7 @@ export class IllnessEditDisplay extends Component {
   render() {
     return (
       <div className="popup">
-        <div className="MedEvent popup_inner">
+        <div className="MedEvent popup_inner editIllness">
           <input
             className="name"
             value={this.props.illness.name}

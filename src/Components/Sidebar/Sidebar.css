@@ -29,8 +29,17 @@ aside .add {
   font-weight: bold;
 }
 
+aside .add.disabled {
+  color: #696969;
+  font-weight: normal;
+}
+
+aside .add.disabled:hover {
+  text-decoration: none;
+  cursor: default;
+}
+
 aside .nevermind {
-  display: block;
   margin-top: 7px;
   font-style: italic;
 }

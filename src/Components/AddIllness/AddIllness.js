@@ -25,12 +25,15 @@ export class AddIllness extends Component {
 
   // save input value in App's state array and hide input field
   addIllnessName = () => {
-    this.props.addIllnessName(this.state.tempIllnessName);
-    this.toggleInputField();
+    if (this.state.tempIllnessName) {
+      this.props.addIllnessName(this.state.tempIllnessName);
+      this.toggleInputField();
+    }
   }
 
   // show input field if state variable is true
   inputField = () => {
+    let addStyle = this.state.tempIllnessName ? 'active' : 'disabled';
     if (this.state.showInputField) {
       return (
         <div>
@@ -39,9 +42,10 @@ export class AddIllness extends Component {
             onChange={this.updateTempIllnessName}
             value={this.state.tempIllnessName}
             placeholder="Can't be empty"/>
-          <a className="add" onClick={this.addIllnessName}>
+          <a className={`add ${addStyle}`} onClick={this.addIllnessName}>
             add
           </a>
+          <br />
           <a className="nevermind" onClick={this.toggleInputField}>
             (nevermind)
           </a>

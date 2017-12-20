@@ -78,6 +78,10 @@
   margin-left: 10px;
 }
 
+.MedEvent.editIllness input {
+  margin-top: 4px;
+}
+
 .popup {
   position: fixed;
   width: 100%;
