@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Header } from '../Header/Header';
+import { Sidebar } from '../Sidebar/Sidebar';
 
 
 // Home of the Illness info
@@ -26,9 +27,27 @@ class App extends Component {
     ]
   }
 
+  addIllnessNameHandler = (IllnessName) => {
+    const illnessId = Math.floor(Math.random() * 89999) + 10000;
+    const newIllness = {
+      id: illnessId,
+      name: IllnessName,
+      records: []
+    }
+    // add new illness to existing array and save to new variable
+    const updatedIllnesses = [...this.state.illnesses, newIllness];
+    this.setState({
+      illnesses: updatedIllnesses
+    })
+  }
+
   render() {
     return (
-      <Header />
+      <div>
+        <Header />
+        <Sidebar
+          addIllnessName={this.addIllnessNameHandler}/>
+      </div>
     );
   }
 }
