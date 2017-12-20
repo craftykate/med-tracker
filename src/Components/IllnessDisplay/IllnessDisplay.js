@@ -76,7 +76,7 @@ export class IllnessDisplay extends Component {
     if (hour > 12) hour -= 12;
     let minutes = date.getMinutes();
     if (minutes < 10) minutes = "0" + minutes;
-    minutes = minutes === 0 ? '' : `:${minutes}`;
+    minutes = minutes === "00" ? '' : `:${minutes}`;
     const ampm = date.getHours() < 12 ? 'a' : 'p';
     const timeFormatted = `${hour}${minutes}${ampm}`;
 
@@ -90,11 +90,12 @@ export class IllnessDisplay extends Component {
   // render list of records
   renderRecords = () => {
     let recordList;
-    if (this.props.illness.records) {
-      recordList = this.props.illness.records.map(record => {
+    if (this.props.sortedRecords) {
+      recordList = this.props.sortedRecords.map(record => {
         return (
           <li className="medRecord" key={record.id}>
-            {record.info} at {this.formatDate(record.date)}
+            {record.info}
+            <span className="dateTime"> [{this.formatDate(record.date)}]</span>
           </li>
         )
       })

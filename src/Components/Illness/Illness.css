@@ -58,6 +58,11 @@
   margin-bottom: 20px;
 }
 
+.MedEvent .dateTime {
+  font-size: .8em;
+  color: #828282;
+}
+
 .MedEvent button {
   cursor: pointer;
   text-align: center;

@@ -15,6 +15,22 @@ export class Illness extends Component {
     })
   }
 
+  sortRecords = () => {
+    let sortedRecords = this.props.illness.records.sort(function(a, b) {
+      const dateA = a.date;
+      const dateB = b.date;
+      if (dateA < dateB) {
+        return -1;
+      }
+      if (dateA > dateB) {
+        return 1;
+      }
+      // names must be equal
+      return 0;
+    });
+    return sortedRecords;
+  }
+
   render() {
     let editComponent = null;
     if (this.state.editIllness) {
@@ -33,6 +49,7 @@ export class Illness extends Component {
       <div>
         <IllnessDisplay
           illness={this.props.illness}
+          sortedRecords={this.sortRecords()}
           saveNewRecord={this.props.saveNewRecord}
           editIllness={this.showEditBoxHandler}/>
         {editComponent}
