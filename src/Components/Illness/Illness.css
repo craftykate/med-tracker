@@ -1,0 +1,93 @@
+.MedEvent {
+  margin: 0 auto;
+  border: 1px solid #b6b6b6;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 400px;
+
+}
+
+.MedEvent h1, .MedEvent input.name {
+  text-align: center;
+  color: #56a06c;
+  font-size: 2em;
+  width: 100%;
+  border-bottom: 1px solid #56a06c;
+}
+
+.MedEvent .medRecord {
+  padding: 3px 0;
+  color: #5e5e5e;
+}
+
+.MedEvent input.medRecord {
+  width: 50%;
+}
+
+.MedEvent input.addRecord {
+  display: inline;
+  width: 90%;
+  margin: 5px 0;
+  box-sizing: 0;
+  box-sizing: border-box;
+  webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.MedEvent ul.records a {
+  margin-left: 5px;
+  font-size: .8em;
+}
+
+.MedEvent .editDelete {
+  font-style: italic;
+  padding-top: 10px;
+  border-top: 1px solid #56a06c;
+  font-size: .75em;
+}
+
+.MedEvent .editDelete span {
+  display: block;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.MedEvent button {
+  cursor: pointer;
+  text-align: center;
+  margin-right: 10px;
+  padding: 1em;
+  border-radius: 20px;
+  background-color: rgb(104, 48, 148);
+  text-align: center;
+  font-size: 1em;
+  transition: background-color .25s;
+  color: white;
+  outline: none;
+  width: 130px;
+}
+
+.MedEvent button:hover {
+  background-color: rgb(160, 80, 222);
+}
+
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgba(0,0,0, 0.5);
+}
+.popup_inner {
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  top: 80px;
+  margin: auto;
+  background: white;
+}

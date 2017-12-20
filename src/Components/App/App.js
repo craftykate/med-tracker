@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Header } from '../Header/Header';
 import { Sidebar } from '../Sidebar/Sidebar';
+import { IllnessList } from '../IllnessList/IllnessList';
 
 
 class App extends Component {
@@ -47,6 +48,8 @@ class App extends Component {
         <Header />
         <Sidebar
           addIllnessName={this.addIllnessNameHandler}/>
+        <IllnessList
+          illnesses={this.state.illnesses}/>
       </div>
     );
   }
