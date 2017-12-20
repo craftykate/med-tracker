@@ -22,7 +22,7 @@
 }
 
 .MedEvent input.medRecord {
-  width: 50%;
+  width: 90%;
 }
 
 .MedEvent input.addRecord {
@@ -38,6 +38,11 @@
 .MedEvent ul.records a {
   margin-left: 5px;
   font-size: .8em;
+}
+
+.MedEvent li.editRecord {
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 4px;
 }
 
 .MedEvent .editDelete {

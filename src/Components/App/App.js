@@ -79,14 +79,18 @@ class App extends Component {
     })
   }
 
-  updateRecordInfoHandler = (event, illnessId, recordId) => {
+  updateRecordInfoHandler = (event, infoType, illnessId, recordId) => {
     const illnessIndex = this.returnIllnessIndex(illnessId);
     const illnesses = [...this.state.illnesses];
     const illness = {...this.state.illnesses[illnessIndex]};
     const recordIndex = illness.records.findIndex(record => {
       return record.id === recordId;
     });
-    illness.records[recordIndex].info = event.target.value;
+    if (infoType === 'name') {
+      illness.records[recordIndex].info = event.target.value;
+    } else if (infoType === 'date') {
+      illness.records[recordIndex].date = event;
+    }
     illnesses[illnessIndex] = illness;
     this.setState({
       illnesses: illnesses

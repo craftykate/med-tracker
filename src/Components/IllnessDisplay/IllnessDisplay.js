@@ -47,9 +47,9 @@ export class IllnessDisplay extends Component {
     let month = date.getMonth();
     const year = date.getFullYear();
 
+    month += 1;
     if (month < 10) month = "0" + month;
     // add one to month since javascript starts at 0
-    month += 1;
     if (day < 10) day = "0" + day;
     // put it all together
     const today = year + "-" + month + "-" + day;
