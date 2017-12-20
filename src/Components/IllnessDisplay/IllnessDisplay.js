@@ -120,7 +120,7 @@ export class IllnessDisplay extends Component {
             id={`${this.props.illness.id}_time`}
             defaultValue={this.state.time}
             />
-          <a onClick={this.saveNewRecord}>add</a>
+          <a className="addRecordButton" onClick={this.saveNewRecord}>add</a>
           <a onClick={this.closeDateTimeFields}>(close)</a>
         </div>
       )

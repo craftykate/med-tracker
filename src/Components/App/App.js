@@ -16,7 +16,7 @@ class App extends Component {
           {
             id: 35890,
             info: 'temp 103.1',
-            date: new Date(2017, 11, 17, 16, 0)
+            date: new Date(2017, 11, 17, 13, 0)
           },
           {
             id: 24567,

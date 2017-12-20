@@ -63,6 +63,23 @@
   color: #828282;
 }
 
+.MedEvent .addRecordButton {
+  cursor: pointer;
+  text-align: center;
+  margin: 0 10px;
+  padding: 3px 1em;
+  border-radius: 10px;
+  background-color: rgb(104, 48, 148);
+  font-size: 1em;
+  transition: background-color .25s;
+  color: white;
+}
+
+.MedEvent .addRecordButton:hover {
+  background-color: rgb(160, 80, 222);
+  text-decoration: none;
+}
+
 .MedEvent button {
   cursor: pointer;
   text-align: center;
