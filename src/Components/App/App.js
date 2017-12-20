@@ -78,6 +78,20 @@ class App extends Component {
     })
   }
 
+  updateRecordInfoHandler = (event, illnessId, recordId) => {
+    const illnessIndex = this.returnIllnessIndex(illnessId);
+    const illnesses = [...this.state.illnesses];
+    const illness = {...this.state.illnesses[illnessIndex]};
+    const recordIndex = illness.records.findIndex(record => {
+      return record.id === recordId;
+    });
+    illness.records[recordIndex].info = event.target.value;
+    illnesses[illnessIndex] = illness;
+    this.setState({
+      illnesses: illnesses
+    });
+  }
+
   // delete illness from state array
   deleteIllnessHandler = (illnessId) => {
     const illnessIndex = this.returnIllnessIndex(illnessId);
@@ -120,6 +134,7 @@ class App extends Component {
           deleteIllness={this.deleteIllnessHandler}
           updateIllnessName={this.updateIllnessNameHandler}
           deleteRecord={this.deleteRecordHandler}
+          updateRecordInfo={this.updateRecordInfoHandler}
         />
       </div>
     );

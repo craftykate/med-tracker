@@ -33,6 +33,7 @@ export class IllnessList extends Component {
         deleteIllness={this.props.deleteIllness}
         updateIllnessName={this.props.updateIllnessName}
         deleteRecord={this.props.deleteRecord}
+        updateRecordInfo={this.props.updateRecordInfo}
       />
     )
   }

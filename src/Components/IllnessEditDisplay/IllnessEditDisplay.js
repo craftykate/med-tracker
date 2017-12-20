@@ -14,6 +14,7 @@ export class IllnessEditDisplay extends Component {
             <input
               className="medRecord"
               value={record.info}
+              onChange={(event) => this.props.updateRecordInfo(event, this.props.illness.id, record.id)}
               />
             <a
               className="delRecord"
