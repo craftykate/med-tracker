@@ -69,6 +69,22 @@ class App extends Component {
     })
   }
 
+  // delete illness from state array
+  deleteIllnessHandler = (illnessToDeleteId) => {
+    // get index of illness to delete
+    const illnessIndex = this.state.illnesses.findIndex(illness => {
+      return illness.id === illnessToDeleteId
+    });
+    // make copy of illnesses array
+    const illnesses = [...this.state.illnesses];
+    // remove item from copy
+    illnesses.splice(illnessIndex, 1);
+    // save copy to state
+    this.setState({
+      illnesses: illnesses
+    })
+  }
+
   render() {
     return (
       <div>
@@ -78,6 +94,7 @@ class App extends Component {
         <IllnessList
           illnesses={this.state.illnesses}
           saveNewRecord={this.saveNewRecordHandler}
+          deleteIllness={this.deleteIllnessHandler}
         />
       </div>
     );

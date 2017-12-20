@@ -30,6 +30,7 @@ export class IllnessList extends Component {
         key={illness.id}
         illness={illness}
         saveNewRecord={this.props.saveNewRecord}
+        deleteIllness={this.props.deleteIllness}
       />
     )
   }

@@ -67,7 +67,9 @@ export class IllnessDisplay extends Component {
           </li>
         </ul>
         <div className="editDelete">
-          (<a>edit</a>)
+          (<a onClick={this.props.editIllness}>
+            edit {this.props.illness.name}
+          </a>)
         </div>
       </div>
     );
