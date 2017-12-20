@@ -24,6 +24,12 @@ export class IllnessDisplay extends Component {
     })
   }
 
+  closeDateTimeFields = () => {
+    this.setState({
+      dateTimeFields: false
+    })
+  }
+
   saveNewRecord = () => {
     const date = document.getElementById(`${this.props.illness.id}_date`).value;
     const time = document.getElementById(`${this.props.illness.id}_time`).value;
@@ -114,6 +120,7 @@ export class IllnessDisplay extends Component {
             defaultValue={this.state.time}
             />
           <a onClick={this.saveNewRecord}>add</a>
+          <a onClick={this.closeDateTimeFields}>(close)</a>
         </div>
       )
     }
