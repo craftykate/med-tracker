@@ -7,6 +7,10 @@ export class IllnessDisplay extends Component {
     tempNewRecord: ''
   }
 
+  componentDidMount() {
+    this.setDate();
+  }
+
   updateTempNewRecord = (event) => {
     this.setState({
       tempNewRecord: event.target.value
@@ -18,6 +22,29 @@ export class IllnessDisplay extends Component {
     this.setState({
       tempNewRecord: ''
     })
+  }
+
+  setDate = () => {
+    const date = new Date();
+    let day = date.getDate();
+    let month = date.getMonth();
+    const year = date.getFullYear();
+    let hour = date.getHours();
+    let minute = date.getMinutes();
+
+    if (month < 10) month = "0" + month;
+    // add one to month since javascript starts at 0
+    month += 1;
+    if (day < 10) day = "0" + day;
+    if (hour < 10) hour = "0" + hour;
+    // round minutes down to last multiple of 5 for readability
+    minute = Math.floor(minute/5)*5;
+    if (minute < 10) minute = "0" + minute;
+    // put it all together
+    const today = year + "-" + month + "-" + day + "T" + hour + ":" + minute;
+    // add to date picker
+    const dateControl = document.querySelector('input[type="datetime-local"]');
+    dateControl.value = today;
   }
 
   // make date readable
@@ -56,14 +83,19 @@ export class IllnessDisplay extends Component {
         <h1>{this.props.illness.name}</h1>
         <ul className="records">
           {this.renderRecords()}
-          <li>
+          <li className="addRecordSpan">
             <input
               className="addRecord"
               value={this.state.tempNewRecord}
               onChange={this.updateTempNewRecord}
               placeholder="add note"
             />
-          <a onClick={this.saveNewRecord}>add</a>
+            <input
+              type="datetime-local"
+              name="recordDate"
+              className="recordDate"
+            />
+            <a onClick={this.saveNewRecord}>add</a>
           </li>
         </ul>
         <div className="editDelete">
