@@ -4,7 +4,6 @@ import { Header } from '../Header/Header';
 import { Sidebar } from '../Sidebar/Sidebar';
 
 
-// Home of the Illness info
 class App extends Component {
   state = {
     illnesses: [
@@ -27,6 +26,7 @@ class App extends Component {
     ]
   }
 
+  // gets illness name from sidebar's addillness component and saves it to array
   addIllnessNameHandler = (IllnessName) => {
     const illnessId = Math.floor(Math.random() * 89999) + 10000;
     const newIllness = {

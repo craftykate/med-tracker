@@ -8,6 +8,7 @@ export class AddIllness extends Component {
     tempIllnessName: ''
   }
 
+  // toggle whether input field is shown
   toggleInputField = () => {
     this.setState({
       showInputField: !this.state.showInputField,
@@ -15,17 +16,20 @@ export class AddIllness extends Component {
     })
   }
 
+  // store input value in a temporary state variable
   updateTempIllnessName = (event) => {
     this.setState({
       tempIllnessName: event.target.value
     })
   }
 
+  // save input value in App's state array and hide input field
   addIllnessName = () => {
     this.props.addIllnessName(this.state.tempIllnessName);
     this.toggleInputField();
   }
 
+  // show input field if state variable is true
   inputField = () => {
     if (this.state.showInputField) {
       return (
