@@ -4,11 +4,11 @@ import './IllnessDisplay.css';
 
 export class IllnessDisplay extends Component {
   state = {
-    tempNewRecord: ''
-  }
-
-  componentDidMount() {
-    this.setDate();
+    tempNewRecord: '',
+    dateTimeFields: false,
+    date: new Date(),
+    day: '',
+    time: ''
   }
 
   updateTempNewRecord = (event) => {
@@ -17,40 +17,64 @@ export class IllnessDisplay extends Component {
     })
   }
 
-  saveNewRecord = () => {
-    this.props.saveNewRecord(this.state.tempNewRecord, this.props.illness.id);
+  showDateTimeFields = () => {
     this.setState({
-      tempNewRecord: ''
+      dateTimeFields: true,
+      day: this.setDate(),
+      time: this.setTime()
+    })
+  }
+
+  saveNewRecord = () => {
+    const date = document.getElementById(`${this.props.illness.id}_date`).value;
+    const time = document.getElementById(`${this.props.illness.id}_time`).value;
+    const dateTime = new Date(date + " " + time);
+    this.props.saveNewRecord(this.state.tempNewRecord, dateTime, this.props.illness.id);
+    this.setState({
+      tempNewRecord: '',
+      dateTimeFields: false
     })
   }
 
   setDate = () => {
-    const date = new Date();
-    let day = date.getDate();
-    let month = date.getMonth();
-    const year = date.getFullYear();
-    let hour = date.getHours();
-    let minute = date.getMinutes();
+    let day = this.state.date.getDate();
+    let month = this.state.date.getMonth();
+    const year = this.state.date.getFullYear();
 
     if (month < 10) month = "0" + month;
     // add one to month since javascript starts at 0
     month += 1;
     if (day < 10) day = "0" + day;
+    // put it all together
+    const today = year + "-" + month + "-" + day;
+    // add to date picker
+    // const dateControl = document.querySelector('input[type="date"]');
+    // dateControl.value = today;
+    return today;
+  }
+
+  setTime = () => {
+    let hour = this.state.date.getHours();
+    let minute = this.state.date.getMinutes();
+
     if (hour < 10) hour = "0" + hour;
     // round minutes down to last multiple of 5 for readability
     minute = Math.floor(minute/5)*5;
     if (minute < 10) minute = "0" + minute;
     // put it all together
-    const today = year + "-" + month + "-" + day + "T" + hour + ":" + minute;
+    const today = hour + ":" + minute;
     // add to date picker
-    const dateControl = document.querySelector('input[type="datetime-local"]');
-    dateControl.value = today;
+    // const dateControl = document.querySelector('input[type="time"]');
+    // dateControl.value = today;
+    return today;
   }
 
   // make date readable
   formatDate = (date) => {
-    const hour = ((date.getHours() + 11) % 12 + 1);
+    let hour = date.getHours();
+    if (hour > 12) hour -= 12;
     let minutes = date.getMinutes();
+    if (minutes < 10) minutes = "0" + minutes;
     minutes = minutes === 0 ? '' : `:${minutes}`;
     const ampm = date.getHours() < 12 ? 'a' : 'p';
     const timeFormatted = `${hour}${minutes}${ampm}`;
@@ -78,6 +102,26 @@ export class IllnessDisplay extends Component {
   }
 
   render() {
+    let dateTimeFields = null;
+    if (this.state.dateTimeFields) {
+      dateTimeFields = (
+        <div>
+          <input
+            type="date"
+            name="recordDate"
+            id={`${this.props.illness.id}_date`}
+            defaultValue={this.state.day}
+            />
+          <input
+            type="time"
+            name="recordTime"
+            id={`${this.props.illness.id}_time`}
+            defaultValue={this.state.time}
+            />
+          <a onClick={this.saveNewRecord}>add</a>
+        </div>
+      )
+    }
     return (
       <div className="MedEvent">
         <h1>{this.props.illness.name}</h1>
@@ -88,14 +132,10 @@ export class IllnessDisplay extends Component {
               className="addRecord"
               value={this.state.tempNewRecord}
               onChange={this.updateTempNewRecord}
+              onFocus={this.showDateTimeFields}
               placeholder="add note"
             />
-            <input
-              type="datetime-local"
-              name="recordDate"
-              className="recordDate"
-            />
-            <a onClick={this.saveNewRecord}>add</a>
+            {dateTimeFields}
           </li>
         </ul>
         <div className="editDelete">

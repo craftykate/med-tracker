@@ -44,11 +44,11 @@ class App extends Component {
   }
 
   // add info to record for illness
-  saveNewRecordHandler = (newRecordInfo, illnessId) => {
+  saveNewRecordHandler = (newRecordInfo, dateTime, illnessId) => {
     const recordToAdd = {
       id: Math.floor(Math.random() * 89999) + 10000,
       info: newRecordInfo,
-      date: new Date()
+      date: dateTime
     }
     // find index of illness to update
     const illnessIndex = this.returnIllnessIndex(illnessId);
