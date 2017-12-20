@@ -138,7 +138,7 @@ export class IllnessDisplay extends Component {
               value={this.state.tempNewRecord}
               onChange={this.updateTempNewRecord}
               onFocus={this.showDateTimeFields}
-              placeholder="add note"
+              placeholder="add note, temp, dose, symptom, etc"
             />
             {dateTimeFields}
           </li>
