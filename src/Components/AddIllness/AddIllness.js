@@ -34,11 +34,17 @@ export class AddIllness extends Component {
     if (this.state.showInputField) {
       return (
         <div>
+          <p className="description">eg. Baby&#39;s flu</p>
           <input
             onChange={this.updateTempIllnessName}
             value={this.state.tempIllnessName}
             placeholder="Can't be empty"/>
-          <a onClick={this.addIllnessName}>add</a>
+          <a className="add" onClick={this.addIllnessName}>
+            add
+          </a>
+          <a className="nevermind" onClick={this.toggleInputField}>
+            (nevermind)
+          </a>
         </div>
       )
     }
@@ -48,7 +54,6 @@ export class AddIllness extends Component {
     return (
       <div>
         <a className="addEvent" onClick={this.toggleInputField}>Add event to track</a>
-        <p className="description">eg. Baby&#39;s flu</p>
         {this.inputField()}
       </div>
     );

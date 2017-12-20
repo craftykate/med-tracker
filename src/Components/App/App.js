@@ -3,6 +3,7 @@ import './App.css';
 import { Header } from '../Header/Header';
 import { Sidebar } from '../Sidebar/Sidebar';
 import { IllnessList } from '../IllnessList/IllnessList';
+import { Footer } from '../Footer/Footer';
 
 
 class App extends Component {
@@ -136,6 +137,7 @@ class App extends Component {
           deleteRecord={this.deleteRecordHandler}
           updateRecordInfo={this.updateRecordInfoHandler}
         />
+      <Footer />
       </div>
     );
   }

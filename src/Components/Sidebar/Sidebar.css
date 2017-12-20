@@ -23,3 +23,14 @@ aside .description {
   font-style: italic;
   color: #7c7c7c;
 }
+
+aside .add {
+  font-size: .7em;
+  font-weight: bold;
+}
+
+aside .nevermind {
+  display: block;
+  margin-top: 7px;
+  font-style: italic;
+}

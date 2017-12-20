@@ -1,0 +1,18 @@
+footer {
+  padding: 15px;
+  color: #545252;
+  border-top: 1px solid #56a06c;
+}
+
+footer ul {
+  text-align: center;
+}
+
+footer ul li {
+  display: inline;
+}
+
+footer a, footer a:visited {
+  color: white;
+  text-decoration: underline;
+}
