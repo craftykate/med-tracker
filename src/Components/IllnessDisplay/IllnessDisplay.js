@@ -6,7 +6,6 @@ export class IllnessDisplay extends Component {
   state = {
     tempNewRecord: '',
     dateTimeFields: false,
-    date: new Date(),
     day: '',
     time: ''
   }
@@ -37,9 +36,10 @@ export class IllnessDisplay extends Component {
   }
 
   setDate = () => {
-    let day = this.state.date.getDate();
-    let month = this.state.date.getMonth();
-    const year = this.state.date.getFullYear();
+    const date = new Date();
+    let day = date.getDate();
+    let month = date.getMonth();
+    const year = date.getFullYear();
 
     if (month < 10) month = "0" + month;
     // add one to month since javascript starts at 0
@@ -47,15 +47,13 @@ export class IllnessDisplay extends Component {
     if (day < 10) day = "0" + day;
     // put it all together
     const today = year + "-" + month + "-" + day;
-    // add to date picker
-    // const dateControl = document.querySelector('input[type="date"]');
-    // dateControl.value = today;
     return today;
   }
 
   setTime = () => {
-    let hour = this.state.date.getHours();
-    let minute = this.state.date.getMinutes();
+    const date = new Date();
+    let hour = date.getHours();
+    let minute = date.getMinutes();
 
     if (hour < 10) hour = "0" + hour;
     // round minutes down to last multiple of 5 for readability
@@ -63,9 +61,6 @@ export class IllnessDisplay extends Component {
     if (minute < 10) minute = "0" + minute;
     // put it all together
     const today = hour + ":" + minute;
-    // add to date picker
-    // const dateControl = document.querySelector('input[type="time"]');
-    // dateControl.value = today;
     return today;
   }
 
