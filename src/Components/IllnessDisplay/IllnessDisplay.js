@@ -7,6 +7,19 @@ export class IllnessDisplay extends Component {
     tempNewRecord: ''
   }
 
+  updateTempNewRecord = (event) => {
+    this.setState({
+      tempNewRecord: event.target.value
+    })
+  }
+
+  saveNewRecord = () => {
+    this.props.saveNewRecord(this.state.tempNewRecord, this.props.illness.id);
+    this.setState({
+      tempNewRecord: ''
+    })
+  }
+
   // make date readable
   formatDate = (date) => {
     const hour = ((date.getHours() + 11) % 12 + 1);
@@ -47,9 +60,10 @@ export class IllnessDisplay extends Component {
             <input
               className="addRecord"
               value={this.state.tempNewRecord}
+              onChange={this.updateTempNewRecord}
               placeholder="add note"
             />
-            <a>add</a>
+          <a onClick={this.saveNewRecord}>add</a>
           </li>
         </ul>
         <div className="editDelete">

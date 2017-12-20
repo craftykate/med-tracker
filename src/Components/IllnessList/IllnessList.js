@@ -29,6 +29,7 @@ export class IllnessList extends Component {
       <Illness
         key={illness.id}
         illness={illness}
+        saveNewRecord={this.props.saveNewRecord}
       />
     )
   }

@@ -9,7 +9,9 @@ export class Illness extends Component {
     return (
       <div>
         <IllnessDisplay
-          illness={this.props.illness}/>
+          illness={this.props.illness}
+          saveNewRecord={this.props.saveNewRecord}
+        />
       </div>
     );
   }
