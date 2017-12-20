@@ -101,3 +101,10 @@
   margin: auto;
   background: white;
 }
+
+@media (max-width:500px) {
+  .popup_inner {
+    width: 84%;
+    left: 3%;
+  }
+}
