@@ -1,6 +1,7 @@
 aside {
   display: block;
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
   min-width: 200px;
   padding: 10px 5px;
   text-align: center;
