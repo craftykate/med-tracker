@@ -71,7 +71,8 @@ export class IllnessDisplay extends Component {
   }
 
   // make date readable
-  formatDate = (date) => {
+  formatDate = (givenDate) => {
+    const date = new Date(givenDate);
     let hour = date.getHours();
     if (hour > 12) hour -= 12;
     let minutes = date.getMinutes();
@@ -104,6 +105,7 @@ export class IllnessDisplay extends Component {
   }
 
   render() {
+    this.props.updateStorage();
     let dateTimeFields = null;
     if (this.state.dateTimeFields) {
       dateTimeFields = (

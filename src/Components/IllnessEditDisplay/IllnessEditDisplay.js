@@ -5,7 +5,7 @@ import './IllnessEditDisplay.css';
 export class IllnessEditDisplay extends Component {
 
   setDate = (recordDate) => {
-    const date = recordDate;
+    const date = new Date(recordDate);
     let day = date.getDate();
     let month = date.getMonth();
     const year = date.getFullYear();
@@ -20,7 +20,7 @@ export class IllnessEditDisplay extends Component {
   }
 
   setTime = (recordDate) => {
-    const date = recordDate;
+    const date = new Date(recordDate);
     let hour = date.getHours();
     let minute = date.getMinutes();
 

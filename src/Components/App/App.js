@@ -7,25 +7,44 @@ import { Footer } from '../Footer/Footer';
 
 
 class App extends Component {
-  state = {
-    illnesses: [
-      {
-        id: 63790,
-        name: `Baby's Flu`,
-        records: [
-          {
-            id: 35890,
-            info: 'temp 103.1',
-            date: new Date(2017, 11, 17, 13, 0)
-          },
-          {
-            id: 24567,
-            info: 'tylenol',
-            date: new Date(2017, 11, 18, 15, 15)
-          }
-        ]
-      }
-    ]
+  constructor(props) {
+    super(props);
+    let initialArray;
+    if (localStorage.getItem('illnesses') !== null) {
+      initialArray = JSON.parse(localStorage.getItem('illnesses'));
+    } else {
+      initialArray = [
+        {
+          id: 63790,
+          name: `Baby's Flu`,
+          records: [
+            {
+              id: 35890,
+              info: 'temp 103.1',
+              date: new Date(2017, 11, 17, 13, 0)
+            },
+            {
+              id: 24567,
+              info: 'tylenol',
+              date: new Date(2017, 11, 18, 15, 15)
+            }
+          ]
+        }
+      ]
+    }
+    this.state = {
+      illnesses: initialArray
+    }
+  }
+
+
+  componentDidUpdate() {
+    this.saveIllnessesToStorage();
+  }
+
+  // saves medArray to local storage
+  saveIllnessesToStorage = () => {
+    localStorage.setItem('illnesses',  JSON.stringify(this.state.illnesses));
   }
 
   // gets illness name from sidebar's addillness component and saves it to array
@@ -104,7 +123,7 @@ class App extends Component {
     illnesses.splice(illnessIndex, 1);
     this.setState({
       illnesses: illnesses
-    })
+    });
   }
 
   deleteRecordHandler = (illnessId, recordId) => {
@@ -140,6 +159,7 @@ class App extends Component {
           updateIllnessName={this.updateIllnessNameHandler}
           deleteRecord={this.deleteRecordHandler}
           updateRecordInfo={this.updateRecordInfoHandler}
+          updateStorage={this.saveIllnessesToStorage}
         />
       <Footer />
       </div>

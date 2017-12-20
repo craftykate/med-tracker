@@ -51,7 +51,9 @@ export class Illness extends Component {
           illness={this.props.illness}
           sortedRecords={this.sortRecords()}
           saveNewRecord={this.props.saveNewRecord}
-          editIllness={this.showEditBoxHandler}/>
+          editIllness={this.showEditBoxHandler}
+          updateStorage={this.props.updateStorage}
+        />
         {editComponent}
       </div>
     );
