@@ -33,7 +33,7 @@ export class IllnessDisplay extends Component {
   saveNewRecord = () => {
     const date = document.getElementById(`${this.props.illness.id}_date`).value;
     const time = document.getElementById(`${this.props.illness.id}_time`).value;
-    const dateTime = new Date(date + " " + time);
+    const dateTime = new Date(date + "T" + time);
     this.props.saveNewRecord(this.state.tempNewRecord, dateTime, this.props.illness.id);
     this.setState({
       tempNewRecord: '',
